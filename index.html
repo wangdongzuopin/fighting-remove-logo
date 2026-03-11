@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小蜜蜂水印去除工具</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="./logo.jpg" alt="小蜜蜂" class="brand-logo">
+        <div>
+          <p class="brand-kicker">PC 网站版</p>
+          <h1>小蜜蜂水印去除工具</h1>
+        </div>
+      </div>
+      <p class="topbar-note">上传图片后框选水印区域，即可去除并导出处理结果。</p>
+    </header>
+
+    <main class="workspace">
+      <section class="panel viewer-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">工作区</p>
+            <h2>预览与框选</h2>
+          </div>
+          <label class="upload-btn" for="fileInput">选择文件</label>
+          <input id="fileInput" type="file" accept="image/*" hidden>
+        </div>
+
+        <div class="stage-wrap">
+          <div id="emptyState" class="empty-state">
+            <strong>拖入图片开始处理</strong>
+            <p>建议选择水印位置清晰、背景相对稳定的图片素材。</p>
+          </div>
+
+          <div id="stage" class="stage hidden">
+            <img id="imagePreview" class="preview-media hidden" alt="图片预览" draggable="false">
+            <div id="selectionBox" class="selection-box hidden">
+              <span>水印区域</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tips-row">
+          <span>操作提示：按住鼠标左键拖拽框选水印区域。</span>
+          <div class="inline-actions">
+            <button id="resetImageBtn" class="text-btn" type="button" disabled>恢复原图</button>
+            <button id="resetSelectionBtn" class="text-btn" type="button">重置选区</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel control-panel">
+        <div class="panel-head side">
+          <div>
+            <p class="eyebrow">控制台</p>
+            <h2>处理与导出</h2>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="field-label">文件类型</label>
+          <div id="fileTypeTag" class="tag">未选择</div>
+        </div>
+
+        <div class="control-group">
+          <label class="field-label">去除策略</label>
+          <p class="field-copy">使用邻域填充覆盖已选区域，适合角落 Logo、水印字样、台标遮挡。</p>
+        </div>
+
+        <div class="control-group">
+          <label class="field-label">当前选区</label>
+          <p id="selectionInfo" class="field-copy">尚未框选区域</p>
+        </div>
+
+        <div class="action-stack">
+          <button id="processBtn" class="primary-btn" type="button" disabled>开始去除</button>
+          <button id="downloadBtn" class="secondary-btn" type="button" disabled>导出结果</button>
+        </div>
+
+        <div id="statusBox" class="status-box">
+          <strong>等待上传文件</strong>
+          <p>导出将保持原始格式与原始分辨率。</p>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
